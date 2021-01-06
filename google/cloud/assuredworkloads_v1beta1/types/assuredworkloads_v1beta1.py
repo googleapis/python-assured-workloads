@@ -46,7 +46,7 @@ class CreateWorkloadRequest(proto.Message):
             Required. The resource name of the new Workload's parent.
             Must be of the form
             ``organizations/{org_id}/locations/{location_id}``.
-        workload (~.assuredworkloads_v1beta1.Workload):
+        workload (google.cloud.assuredworkloads_v1beta1.types.Workload):
             Required. Assured Workload to create
         external_id (str):
             Optional. A identifier associated with the
@@ -68,12 +68,12 @@ class UpdateWorkloadRequest(proto.Message):
     r"""Request for Updating a workload.
 
     Attributes:
-        workload (~.assuredworkloads_v1beta1.Workload):
+        workload (google.cloud.assuredworkloads_v1beta1.types.Workload):
             Required. The workload to update. The workload’s ``name``
             field is used to identify the workload to be updated.
             Format:
             organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             Required. The list of fields to be updated.
     """
 
@@ -149,7 +149,7 @@ class ListWorkloadsResponse(proto.Message):
     r"""Response of ListWorkloads endpoint.
 
     Attributes:
-        workloads (Sequence[~.assuredworkloads_v1beta1.Workload]):
+        workloads (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload]):
             List of Workloads under a given parent.
         next_page_token (str):
             The next page token. Return empty if reached
@@ -183,16 +183,16 @@ class Workload(proto.Message):
             hyphen, and spaces.
 
             Example: My Workload
-        resources (Sequence[~.assuredworkloads_v1beta1.Workload.ResourceInfo]):
+        resources (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceInfo]):
             Output only. The resources associated with
             this workload. These resources will be created
             when creating the workload. If any of the
             projects already exist, the workload creation
             will fail. Always read only.
-        compliance_regime (~.assuredworkloads_v1beta1.Workload.ComplianceRegime):
+        compliance_regime (google.cloud.assuredworkloads_v1beta1.types.Workload.ComplianceRegime):
             Required. Immutable. Compliance Regime
             associated with this workload.
-        create_time (~.timestamp.Timestamp):
+        create_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. Immutable. The Workload creation
             timestamp.
         billing_account (str):
@@ -204,16 +204,16 @@ class Workload(proto.Message):
             assigned billing account. The resource name has the form
             ``billingAccounts/{billing_account_id}``. For example,
             ``billingAccounts/012345-567890-ABCDEF``.
-        il4_settings (~.assuredworkloads_v1beta1.Workload.IL4Settings):
+        il4_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.IL4Settings):
             Required. Input only. Immutable. Settings
             specific to resources needed for IL4.
-        cjis_settings (~.assuredworkloads_v1beta1.Workload.CJISSettings):
+        cjis_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.CJISSettings):
             Required. Input only. Immutable. Settings
             specific to resources needed for CJIS.
-        fedramp_high_settings (~.assuredworkloads_v1beta1.Workload.FedrampHighSettings):
+        fedramp_high_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.FedrampHighSettings):
             Required. Input only. Immutable. Settings
             specific to resources needed for FedRAMP High.
-        fedramp_moderate_settings (~.assuredworkloads_v1beta1.Workload.FedrampModerateSettings):
+        fedramp_moderate_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.FedrampModerateSettings):
             Required. Input only. Immutable. Settings
             specific to resources needed for FedRAMP
             Moderate.
@@ -222,7 +222,7 @@ class Workload(proto.Message):
             calculated on the basis of the Workload
             contents. It will be used in Update & Delete
             operations.
-        labels (Sequence[~.assuredworkloads_v1beta1.Workload.LabelsEntry]):
+        labels (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.LabelsEntry]):
             Optional. Labels applied to the workload.
         provisioned_resources_parent (str):
             Input only. The parent resource for the resources managed by
@@ -231,7 +231,7 @@ class Workload(proto.Message):
             If not specified all resources are created under the
             Workload parent. Formats: folders/{folder_id}
             organizations/{organization_id}
-        kms_settings (~.assuredworkloads_v1beta1.Workload.KMSSettings):
+        kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
             Input only. Settings used to create a CMEK
             crypto key. When set a project with a KMS CMEK
             key is provisioned. This field is mandatory for
@@ -253,7 +253,7 @@ class Workload(proto.Message):
             resource_id (int):
                 Resource identifier. For a project this represents
                 project_number.
-            resource_type (~.assuredworkloads_v1beta1.Workload.ResourceInfo.ResourceType):
+            resource_type (google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceInfo.ResourceType):
                 Indicates the type of resource.
         """
 
@@ -273,12 +273,12 @@ class Workload(proto.Message):
         r"""Settings specific to the Key Management Service.
 
         Attributes:
-            next_rotation_time (~.timestamp.Timestamp):
+            next_rotation_time (google.protobuf.timestamp_pb2.Timestamp):
                 Required. Input only. Immutable. The time at
                 which the Key Management Service will
                 automatically create a new version of the crypto
                 key and mark it as the primary.
-            rotation_period (~.duration.Duration):
+            rotation_period (google.protobuf.duration_pb2.Duration):
                 Required. Input only. Immutable. [next_rotation_time] will
                 be advanced by this period when the Key Management Service
                 automatically rotates a key. Must be at least 24 hours and
@@ -297,7 +297,7 @@ class Workload(proto.Message):
         r"""Settings specific to resources needed for IL4.
 
         Attributes:
-            kms_settings (~.assuredworkloads_v1beta1.Workload.KMSSettings):
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
                 Required. Input only. Immutable. Settings
                 used to create a CMEK crypto key.
         """
@@ -310,7 +310,7 @@ class Workload(proto.Message):
         r"""Settings specific to resources needed for CJIS.
 
         Attributes:
-            kms_settings (~.assuredworkloads_v1beta1.Workload.KMSSettings):
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
                 Required. Input only. Immutable. Settings
                 used to create a CMEK crypto key.
         """
@@ -323,7 +323,7 @@ class Workload(proto.Message):
         r"""Settings specific to resources needed for FedRAMP High.
 
         Attributes:
-            kms_settings (~.assuredworkloads_v1beta1.Workload.KMSSettings):
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
                 Required. Input only. Immutable. Settings
                 used to create a CMEK crypto key.
         """
@@ -336,7 +336,7 @@ class Workload(proto.Message):
         r"""Settings specific to resources needed for FedRAMP Moderate.
 
         Attributes:
-            kms_settings (~.assuredworkloads_v1beta1.Workload.KMSSettings):
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
                 Required. Input only. Immutable. Settings
                 used to create a CMEK crypto key.
         """
@@ -398,14 +398,14 @@ class CreateWorkloadOperationMetadata(proto.Message):
     r"""Operation metadata to give request details of CreateWorkload.
 
     Attributes:
-        create_time (~.timestamp.Timestamp):
+        create_time (google.protobuf.timestamp_pb2.Timestamp):
             Optional. Time when the operation was
             created.
         display_name (str):
             Optional. The display name of the workload.
         parent (str):
             Optional. The parent of the workload.
-        compliance_regime (~.assuredworkloads_v1beta1.Workload.ComplianceRegime):
+        compliance_regime (google.cloud.assuredworkloads_v1beta1.types.Workload.ComplianceRegime):
             Optional. Compliance controls that should be
             applied to the resources managed by the
             workload.

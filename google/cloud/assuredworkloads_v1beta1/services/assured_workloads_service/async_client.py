@@ -88,6 +88,7 @@ class AssuredWorkloadsServiceAsyncClient:
         AssuredWorkloadsServiceClient.parse_common_location_path
     )
 
+    from_service_account_info = AssuredWorkloadsServiceClient.from_service_account_info
     from_service_account_file = AssuredWorkloadsServiceClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -166,16 +167,17 @@ class AssuredWorkloadsServiceAsyncClient:
         r"""Creates Assured Workload.
 
         Args:
-            request (:class:`~.assuredworkloads_v1beta1.CreateWorkloadRequest`):
+            request (:class:`google.cloud.assuredworkloads_v1beta1.types.CreateWorkloadRequest`):
                 The request object. Request for creating a workload.
             parent (:class:`str`):
                 Required. The resource name of the new Workload's
                 parent. Must be of the form
                 ``organizations/{org_id}/locations/{location_id}``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            workload (:class:`~.assuredworkloads_v1beta1.Workload`):
+            workload (:class:`google.cloud.assuredworkloads_v1beta1.types.Workload`):
                 Required. Assured Workload to create
                 This corresponds to the ``workload`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -188,13 +190,11 @@ class AssuredWorkloadsServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.assuredworkloads_v1beta1.Workload``: An
-                Workload object for managing highly regulated workloads
-                of cloud customers.
+                The result type for the operation will be :class:`google.cloud.assuredworkloads_v1beta1.types.Workload` An Workload object for managing highly regulated workloads of cloud
+                   customers.
 
         """
         # Create or coerce a protobuf request object.
@@ -261,19 +261,21 @@ class AssuredWorkloadsServiceAsyncClient:
         workload can be in progress.
 
         Args:
-            request (:class:`~.assuredworkloads_v1beta1.UpdateWorkloadRequest`):
+            request (:class:`google.cloud.assuredworkloads_v1beta1.types.UpdateWorkloadRequest`):
                 The request object. Request for Updating a workload.
-            workload (:class:`~.assuredworkloads_v1beta1.Workload`):
+            workload (:class:`google.cloud.assuredworkloads_v1beta1.types.Workload`):
                 Required. The workload to update. The workload’s
                 ``name`` field is used to identify the workload to be
                 updated. Format:
                 organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+
                 This corresponds to the ``workload`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 Required. The list of fields to be
                 updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -285,7 +287,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.assuredworkloads_v1beta1.Workload:
+            google.cloud.assuredworkloads_v1beta1.types.Workload:
                 An Workload object for managing
                 highly regulated workloads of cloud
                 customers.
@@ -347,12 +349,13 @@ class AssuredWorkloadsServiceAsyncClient:
         with a FAILED_PRECONDITION error.
 
         Args:
-            request (:class:`~.assuredworkloads_v1beta1.DeleteWorkloadRequest`):
+            request (:class:`google.cloud.assuredworkloads_v1beta1.types.DeleteWorkloadRequest`):
                 The request object. Request for deleting a Workload.
             name (:class:`str`):
                 Required. The ``name`` field is used to identify the
                 workload. Format:
                 organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -418,7 +421,7 @@ class AssuredWorkloadsServiceAsyncClient:
         r"""Gets Assured Workload associated with a CRM Node
 
         Args:
-            request (:class:`~.assuredworkloads_v1beta1.GetWorkloadRequest`):
+            request (:class:`google.cloud.assuredworkloads_v1beta1.types.GetWorkloadRequest`):
                 The request object. Request for fetching a workload.
             name (:class:`str`):
                 Required. The resource name of the Workload to fetch.
@@ -427,6 +430,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
                 For example,
                 "organizations/123/locations/us-east1/workloads/assured-workload-1".
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -438,7 +442,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.assuredworkloads_v1beta1.Workload:
+            google.cloud.assuredworkloads_v1beta1.types.Workload:
                 An Workload object for managing
                 highly regulated workloads of cloud
                 customers.
@@ -500,13 +504,14 @@ class AssuredWorkloadsServiceAsyncClient:
         r"""Lists Assured Workloads under a CRM Node.
 
         Args:
-            request (:class:`~.assuredworkloads_v1beta1.ListWorkloadsRequest`):
+            request (:class:`google.cloud.assuredworkloads_v1beta1.types.ListWorkloadsRequest`):
                 The request object. Request for fetching workloads in an
                 organization.
             parent (:class:`str`):
                 Required. Parent Resource to list workloads from. Must
                 be of the form
                 ``organizations/{org_id}/locations/{location}``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -518,7 +523,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListWorkloadsAsyncPager:
+            google.cloud.assuredworkloads_v1beta1.services.assured_workloads_service.pagers.ListWorkloadsAsyncPager:
                 Response of ListWorkloads endpoint.
                 Iterating over this object will yield
                 results and resolve additional pages
