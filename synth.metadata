@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-assured-workloads.git",
-        "sha": "2f833d21fcee8a5c8ab402d39a2e06aa6e34e24b"
+        "sha": "5f8f4ae475273f5f760458df46bf213730d639c0"
       }
     },
     {
