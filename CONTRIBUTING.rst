@@ -207,7 +207,7 @@ instead of
 ``https://github.com/googleapis/python-assured-workloads/blob/master/CONTRIBUTING.rst``)
 may cause problems creating links or rendering the description.
 
-.. _description on PyPI: https://pypi.org/project/google-cloud-assured-workflows
+.. _description on PyPI: https://pypi.org/project/google-cloud-assured-workloads
 
 
 *************************
