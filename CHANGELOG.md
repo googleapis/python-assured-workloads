@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/googleapis/python-assured-workloads/compare/v0.2.1...v0.3.0) (2021-04-26)
+
+
+### Features
+
+* Add 'resource_settings' field to provide custom properties (ids) for the provisioned projects ([6ff8af6](https://www.github.com/googleapis/python-assured-workloads/commit/6ff8af6abc18d74d624e71b547f921b444435310))
+* add HIPAA and HITRUST compliance regimes ([#13](https://www.github.com/googleapis/python-assured-workloads/issues/13)) ([6ff8af6](https://www.github.com/googleapis/python-assured-workloads/commit/6ff8af6abc18d74d624e71b547f921b444435310))
+
+
+### Bug Fixes
+
+* fix retry deadlines ([6ff8af6](https://www.github.com/googleapis/python-assured-workloads/commit/6ff8af6abc18d74d624e71b547f921b444435310))
+
 ### [0.2.1](https://www.github.com/googleapis/python-assured-workloads/compare/v0.2.0...v0.2.1) (2021-02-11)
 
 
