@@ -2068,7 +2068,7 @@ def test_assured_workloads_service_transport_create_channel(
         transport_class(quota_project_id="octopus", scopes=["1", "2"])
 
         create_channel.assert_called_with(
-            "assuredworkloads.googleapis.com:443",
+            "assuredworkloads.googleapis.com",
             credentials=creds,
             credentials_file=None,
             quota_project_id="octopus",

@@ -252,7 +252,9 @@ class AssuredWorkloadsServiceGrpcAsyncIOTransport(AssuredWorkloadsServiceTranspo
         [assuredworkloads_v1beta1.CreateWorkloadRequest],
         Awaitable[operations.Operation],
     ]:
-        r"""Return a callable for the create workload method over gRPC.
+        r"""Return a callable for the
+        create workload
+          method over gRPC.
 
         Creates Assured Workload.
 
@@ -281,7 +283,9 @@ class AssuredWorkloadsServiceGrpcAsyncIOTransport(AssuredWorkloadsServiceTranspo
         [assuredworkloads_v1beta1.UpdateWorkloadRequest],
         Awaitable[assuredworkloads_v1beta1.Workload],
     ]:
-        r"""Return a callable for the update workload method over gRPC.
+        r"""Return a callable for the
+        update workload
+          method over gRPC.
 
         Updates an existing workload. Currently allows updating of
         workload display_name and labels. For force updates don't set
@@ -312,7 +316,9 @@ class AssuredWorkloadsServiceGrpcAsyncIOTransport(AssuredWorkloadsServiceTranspo
     ) -> Callable[
         [assuredworkloads_v1beta1.DeleteWorkloadRequest], Awaitable[empty.Empty]
     ]:
-        r"""Return a callable for the delete workload method over gRPC.
+        r"""Return a callable for the
+        delete workload
+          method over gRPC.
 
         Deletes the workload. Make sure that workload's direct children
         are already in a deleted state, otherwise the request will fail
@@ -343,7 +349,9 @@ class AssuredWorkloadsServiceGrpcAsyncIOTransport(AssuredWorkloadsServiceTranspo
         [assuredworkloads_v1beta1.GetWorkloadRequest],
         Awaitable[assuredworkloads_v1beta1.Workload],
     ]:
-        r"""Return a callable for the get workload method over gRPC.
+        r"""Return a callable for the
+        get workload
+          method over gRPC.
 
         Gets Assured Workload associated with a CRM Node
 
@@ -372,7 +380,9 @@ class AssuredWorkloadsServiceGrpcAsyncIOTransport(AssuredWorkloadsServiceTranspo
         [assuredworkloads_v1beta1.ListWorkloadsRequest],
         Awaitable[assuredworkloads_v1beta1.ListWorkloadsResponse],
     ]:
-        r"""Return a callable for the list workloads method over gRPC.
+        r"""Return a callable for the
+        list workloads
+          method over gRPC.
 
         Lists Assured Workloads under a CRM Node.
 

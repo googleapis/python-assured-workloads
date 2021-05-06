@@ -14,13 +14,12 @@
 # limitations under the License.
 #
 
-from google.cloud.assuredworkloads_v1beta1.services.assured_workloads_service.client import (
-    AssuredWorkloadsServiceClient,
-)
 from google.cloud.assuredworkloads_v1beta1.services.assured_workloads_service.async_client import (
     AssuredWorkloadsServiceAsyncClient,
 )
-
+from google.cloud.assuredworkloads_v1beta1.services.assured_workloads_service.client import (
+    AssuredWorkloadsServiceClient,
+)
 from google.cloud.assuredworkloads_v1beta1.types.assuredworkloads_v1beta1 import (
     CreateWorkloadOperationMetadata,
 )
@@ -47,8 +46,8 @@ from google.cloud.assuredworkloads_v1beta1.types.assuredworkloads_v1beta1 import
 )
 
 __all__ = (
-    "AssuredWorkloadsServiceClient",
     "AssuredWorkloadsServiceAsyncClient",
+    "AssuredWorkloadsServiceClient",
     "CreateWorkloadOperationMetadata",
     "CreateWorkloadRequest",
     "DeleteWorkloadRequest",
