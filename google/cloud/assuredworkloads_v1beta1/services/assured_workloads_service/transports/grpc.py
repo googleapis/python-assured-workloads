@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple, Union
+from typing import Callable, Dict, Optional, Sequence, Tuple
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import operations_v1  # type: ignore
@@ -28,6 +30,7 @@ import grpc  # type: ignore
 from google.cloud.assuredworkloads_v1beta1.types import assuredworkloads_v1beta1
 from google.longrunning import operations_pb2 as operations  # type: ignore
 from google.protobuf import empty_pb2 as empty  # type: ignore
+
 from .base import AssuredWorkloadsServiceTransport, DEFAULT_CLIENT_INFO
 
 
@@ -64,8 +67,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]):
-                 The hostname to connect to.
+            host (Optional[str]): The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -207,15 +209,13 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
+        scopes = scopes or cls.AUTH_SCOPES
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
+            scopes=scopes,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -245,9 +245,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
     ) -> Callable[
         [assuredworkloads_v1beta1.CreateWorkloadRequest], operations.Operation
     ]:
-        r"""Return a callable for the
-        create workload
-          method over gRPC.
+        r"""Return a callable for the create workload method over gRPC.
 
         Creates Assured Workload.
 
@@ -276,9 +274,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
         [assuredworkloads_v1beta1.UpdateWorkloadRequest],
         assuredworkloads_v1beta1.Workload,
     ]:
-        r"""Return a callable for the
-        update workload
-          method over gRPC.
+        r"""Return a callable for the update workload method over gRPC.
 
         Updates an existing workload. Currently allows updating of
         workload display_name and labels. For force updates don't set
@@ -307,9 +303,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
     def delete_workload(
         self,
     ) -> Callable[[assuredworkloads_v1beta1.DeleteWorkloadRequest], empty.Empty]:
-        r"""Return a callable for the
-        delete workload
-          method over gRPC.
+        r"""Return a callable for the delete workload method over gRPC.
 
         Deletes the workload. Make sure that workload's direct children
         are already in a deleted state, otherwise the request will fail
@@ -339,9 +333,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
     ) -> Callable[
         [assuredworkloads_v1beta1.GetWorkloadRequest], assuredworkloads_v1beta1.Workload
     ]:
-        r"""Return a callable for the
-        get workload
-          method over gRPC.
+        r"""Return a callable for the get workload method over gRPC.
 
         Gets Assured Workload associated with a CRM Node
 
@@ -370,9 +362,7 @@ class AssuredWorkloadsServiceGrpcTransport(AssuredWorkloadsServiceTransport):
         [assuredworkloads_v1beta1.ListWorkloadsRequest],
         assuredworkloads_v1beta1.ListWorkloadsResponse,
     ]:
-        r"""Return a callable for the
-        list workloads
-          method over gRPC.
+        r"""Return a callable for the list workloads method over gRPC.
 
         Lists Assured Workloads under a CRM Node.
 

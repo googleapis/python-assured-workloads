@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from collections import OrderedDict
 import functools
 import re
@@ -34,6 +36,7 @@ from google.cloud.assuredworkloads_v1beta1.services.assured_workloads_service im
 from google.cloud.assuredworkloads_v1beta1.types import assuredworkloads_v1beta1
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
+
 from .transports.base import AssuredWorkloadsServiceTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AssuredWorkloadsServiceGrpcAsyncIOTransport
 from .client import AssuredWorkloadsServiceClient
@@ -51,28 +54,33 @@ class AssuredWorkloadsServiceAsyncClient:
     parse_workload_path = staticmethod(
         AssuredWorkloadsServiceClient.parse_workload_path
     )
+
     common_billing_account_path = staticmethod(
         AssuredWorkloadsServiceClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         AssuredWorkloadsServiceClient.parse_common_billing_account_path
     )
+
     common_folder_path = staticmethod(AssuredWorkloadsServiceClient.common_folder_path)
     parse_common_folder_path = staticmethod(
         AssuredWorkloadsServiceClient.parse_common_folder_path
     )
+
     common_organization_path = staticmethod(
         AssuredWorkloadsServiceClient.common_organization_path
     )
     parse_common_organization_path = staticmethod(
         AssuredWorkloadsServiceClient.parse_common_organization_path
     )
+
     common_project_path = staticmethod(
         AssuredWorkloadsServiceClient.common_project_path
     )
     parse_common_project_path = staticmethod(
         AssuredWorkloadsServiceClient.parse_common_project_path
     )
+
     common_location_path = staticmethod(
         AssuredWorkloadsServiceClient.common_location_path
     )
@@ -166,6 +174,7 @@ class AssuredWorkloadsServiceAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
+
         self._client = AssuredWorkloadsServiceClient(
             credentials=credentials,
             transport=transport,
@@ -187,8 +196,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         Args:
             request (:class:`google.cloud.assuredworkloads_v1beta1.types.CreateWorkloadRequest`):
-                The request object.
-                Request for creating a workload.
+                The request object. Request for creating a workload.
             parent (:class:`str`):
                 Required. The resource name of the new Workload's
                 parent. Must be of the form
@@ -202,6 +210,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 This corresponds to the ``workload`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -230,6 +239,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if parent is not None:
             request.parent = parent
         if workload is not None:
@@ -280,8 +290,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         Args:
             request (:class:`google.cloud.assuredworkloads_v1beta1.types.UpdateWorkloadRequest`):
-                The request object.
-                Request for Updating a workload.
+                The request object. Request for Updating a workload.
             workload (:class:`google.cloud.assuredworkloads_v1beta1.types.Workload`):
                 Required. The workload to update. The workload’s
                 ``name`` field is used to identify the workload to be
@@ -298,6 +307,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -325,6 +335,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if workload is not None:
             request.workload = workload
         if update_mask is not None:
@@ -367,8 +378,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         Args:
             request (:class:`google.cloud.assuredworkloads_v1beta1.types.DeleteWorkloadRequest`):
-                The request object.
-                Request for deleting a Workload.
+                The request object. Request for deleting a Workload.
             name (:class:`str`):
                 Required. The ``name`` field is used to identify the
                 workload. Format:
@@ -377,6 +387,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -397,6 +408,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if name is not None:
             request.name = name
 
@@ -439,8 +451,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         Args:
             request (:class:`google.cloud.assuredworkloads_v1beta1.types.GetWorkloadRequest`):
-                The request object.
-                Request for fetching a workload.
+                The request object. Request for fetching a workload.
             name (:class:`str`):
                 Required. The resource name of the Workload to fetch.
                 This is the workloads's relative path in the API,
@@ -452,6 +463,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -479,6 +491,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if name is not None:
             request.name = name
 
@@ -522,8 +535,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         Args:
             request (:class:`google.cloud.assuredworkloads_v1beta1.types.ListWorkloadsRequest`):
-                The request object.
-                Request for fetching workloads in an
+                The request object. Request for fetching workloads in an
                 organization.
             parent (:class:`str`):
                 Required. Parent Resource to list workloads from. Must
@@ -533,6 +545,7 @@ class AssuredWorkloadsServiceAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -561,6 +574,7 @@ class AssuredWorkloadsServiceAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
+
         if parent is not None:
             request.parent = parent
 
