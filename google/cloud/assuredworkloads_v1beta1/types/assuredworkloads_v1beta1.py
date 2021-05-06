@@ -380,7 +380,7 @@ class Workload(proto.Message):
         message=FedrampModerateSettings,
     )
     etag = proto.Field(proto.STRING, number=9,)
-    labels = proto.MapField(proto.STRING, proto.STRING, number=10)
+    labels = proto.MapField(proto.STRING, proto.STRING, number=10,)
     provisioned_resources_parent = proto.Field(proto.STRING, number=13,)
     kms_settings = proto.Field(proto.MESSAGE, number=14, message=KMSSettings,)
     resource_settings = proto.RepeatedField(

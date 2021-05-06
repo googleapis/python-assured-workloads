@@ -26,6 +26,7 @@ from .types.assuredworkloads_v1beta1 import UpdateWorkloadRequest
 from .types.assuredworkloads_v1beta1 import Workload
 
 __all__ = (
+    "AssuredWorkloadsServiceClient",
     "CreateWorkloadOperationMetadata",
     "CreateWorkloadRequest",
     "DeleteWorkloadRequest",
@@ -34,5 +35,4 @@ __all__ = (
     "ListWorkloadsResponse",
     "UpdateWorkloadRequest",
     "Workload",
-    "AssuredWorkloadsServiceClient",
 )
