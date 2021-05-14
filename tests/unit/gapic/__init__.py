@@ -13,24 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .assuredworkloads_v1beta1 import (
-    CreateWorkloadOperationMetadata,
-    CreateWorkloadRequest,
-    DeleteWorkloadRequest,
-    GetWorkloadRequest,
-    ListWorkloadsRequest,
-    ListWorkloadsResponse,
-    UpdateWorkloadRequest,
-    Workload,
-)
-
-__all__ = (
-    'CreateWorkloadOperationMetadata',
-    'CreateWorkloadRequest',
-    'DeleteWorkloadRequest',
-    'GetWorkloadRequest',
-    'ListWorkloadsRequest',
-    'ListWorkloadsResponse',
-    'UpdateWorkloadRequest',
-    'Workload',
-)
