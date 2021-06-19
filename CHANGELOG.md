@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.2](https://www.github.com/googleapis/python-assured-workloads/compare/v0.3.1...v0.3.2) (2021-06-19)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-assured-workloads/issues/1127)) ([#47](https://www.github.com/googleapis/python-assured-workloads/issues/47)) ([0f28736](https://www.github.com/googleapis/python-assured-workloads/commit/0f28736ad7d1966f41410d5d571fb56b6fef91df))
+
 ### [0.3.1](https://www.github.com/googleapis/python-assured-workloads/compare/v0.3.0...v0.3.1) (2021-06-16)
 
 
