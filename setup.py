@@ -19,7 +19,7 @@ import io
 import os
 import setuptools  # type: ignore
 
-version = "0.3.0"
+version = "0.3.1"
 
 package_root = os.path.abspath(os.path.dirname(__file__))
 
@@ -35,12 +35,16 @@ setuptools.setup(
     author_email="googleapis-packages@google.com",
     license="Apache 2.0",
     url="https://github.com/googleapis/python-assured-workloads",
-    packages=setuptools.PEP420PackageFinder.find(),
+    packages=[
+        package
+        for package in setuptools.PEP420PackageFinder.find()
+        if package.startswith("google")
+    ],
     namespace_packages=("google", "google.cloud"),
     platforms="Posix; MacOS X; Windows",
     include_package_data=True,
     install_requires=(
-        "google-api-core[grpc] >= 1.22.2, < 2.0.0dev",
+        "google-api-core[grpc] >= 1.26.0, <2.0.0dev",
         "proto-plus >= 1.4.0",
         "packaging >= 14.3",
     ),
