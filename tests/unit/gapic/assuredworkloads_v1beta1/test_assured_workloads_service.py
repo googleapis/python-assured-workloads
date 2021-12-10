@@ -763,6 +763,8 @@ def test_update_workload(
             billing_account="billing_account_value",
             etag="etag_value",
             provisioned_resources_parent="provisioned_resources_parent_value",
+            kaj_enrollment_state=assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING,
+            enable_sovereign_controls=True,
             il4_settings=assuredworkloads_v1beta1.Workload.IL4Settings(
                 kms_settings=assuredworkloads_v1beta1.Workload.KMSSettings(
                     next_rotation_time=timestamp_pb2.Timestamp(seconds=751)
@@ -787,6 +789,11 @@ def test_update_workload(
     assert response.billing_account == "billing_account_value"
     assert response.etag == "etag_value"
     assert response.provisioned_resources_parent == "provisioned_resources_parent_value"
+    assert (
+        response.kaj_enrollment_state
+        == assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING
+    )
+    assert response.enable_sovereign_controls is True
 
 
 def test_update_workload_from_dict():
@@ -832,6 +839,8 @@ async def test_update_workload_async(
                 billing_account="billing_account_value",
                 etag="etag_value",
                 provisioned_resources_parent="provisioned_resources_parent_value",
+                kaj_enrollment_state=assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING,
+                enable_sovereign_controls=True,
             )
         )
         response = await client.update_workload(request)
@@ -852,6 +861,11 @@ async def test_update_workload_async(
     assert response.billing_account == "billing_account_value"
     assert response.etag == "etag_value"
     assert response.provisioned_resources_parent == "provisioned_resources_parent_value"
+    assert (
+        response.kaj_enrollment_state
+        == assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING
+    )
+    assert response.enable_sovereign_controls is True
 
 
 @pytest.mark.asyncio
@@ -1236,6 +1250,8 @@ def test_get_workload(
             billing_account="billing_account_value",
             etag="etag_value",
             provisioned_resources_parent="provisioned_resources_parent_value",
+            kaj_enrollment_state=assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING,
+            enable_sovereign_controls=True,
             il4_settings=assuredworkloads_v1beta1.Workload.IL4Settings(
                 kms_settings=assuredworkloads_v1beta1.Workload.KMSSettings(
                     next_rotation_time=timestamp_pb2.Timestamp(seconds=751)
@@ -1260,6 +1276,11 @@ def test_get_workload(
     assert response.billing_account == "billing_account_value"
     assert response.etag == "etag_value"
     assert response.provisioned_resources_parent == "provisioned_resources_parent_value"
+    assert (
+        response.kaj_enrollment_state
+        == assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING
+    )
+    assert response.enable_sovereign_controls is True
 
 
 def test_get_workload_from_dict():
@@ -1305,6 +1326,8 @@ async def test_get_workload_async(
                 billing_account="billing_account_value",
                 etag="etag_value",
                 provisioned_resources_parent="provisioned_resources_parent_value",
+                kaj_enrollment_state=assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING,
+                enable_sovereign_controls=True,
             )
         )
         response = await client.get_workload(request)
@@ -1325,6 +1348,11 @@ async def test_get_workload_async(
     assert response.billing_account == "billing_account_value"
     assert response.etag == "etag_value"
     assert response.provisioned_resources_parent == "provisioned_resources_parent_value"
+    assert (
+        response.kaj_enrollment_state
+        == assuredworkloads_v1beta1.Workload.KajEnrollmentState.KAJ_ENROLLMENT_STATE_PENDING
+    )
+    assert response.enable_sovereign_controls is True
 
 
 @pytest.mark.asyncio
