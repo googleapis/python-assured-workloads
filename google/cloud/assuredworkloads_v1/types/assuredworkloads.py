@@ -327,6 +327,8 @@ class Workload(proto.Message):
     class SaaEnrollmentResponse(proto.Message):
         r"""Signed Access Approvals (SAA) enrollment response.
 
+        .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
+
         Attributes:
             setup_status (google.cloud.assuredworkloads_v1.types.Workload.SaaEnrollmentResponse.SetupState):
                 Indicates SAA enrollment status of a given
