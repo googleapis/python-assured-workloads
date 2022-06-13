@@ -21,16 +21,16 @@ from google.protobuf import timestamp_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.assuredworkloads.v1',
+    package="google.cloud.assuredworkloads.v1beta1",
     manifest={
-        'CreateWorkloadRequest',
-        'UpdateWorkloadRequest',
-        'DeleteWorkloadRequest',
-        'GetWorkloadRequest',
-        'ListWorkloadsRequest',
-        'ListWorkloadsResponse',
-        'Workload',
-        'CreateWorkloadOperationMetadata',
+        "CreateWorkloadRequest",
+        "UpdateWorkloadRequest",
+        "DeleteWorkloadRequest",
+        "GetWorkloadRequest",
+        "ListWorkloadsRequest",
+        "ListWorkloadsResponse",
+        "Workload",
+        "CreateWorkloadOperationMetadata",
     },
 )
 
@@ -43,7 +43,7 @@ class CreateWorkloadRequest(proto.Message):
             Required. The resource name of the new Workload's parent.
             Must be of the form
             ``organizations/{org_id}/locations/{location_id}``.
-        workload (google.cloud.assuredworkloads_v1.types.Workload):
+        workload (google.cloud.assuredworkloads_v1beta1.types.Workload):
             Required. Assured Workload to create
         external_id (str):
             Optional. A identifier associated with the
@@ -61,7 +61,7 @@ class CreateWorkloadRequest(proto.Message):
     workload = proto.Field(
         proto.MESSAGE,
         number=2,
-        message='Workload',
+        message="Workload",
     )
     external_id = proto.Field(
         proto.STRING,
@@ -73,7 +73,7 @@ class UpdateWorkloadRequest(proto.Message):
     r"""Request for Updating a workload.
 
     Attributes:
-        workload (google.cloud.assuredworkloads_v1.types.Workload):
+        workload (google.cloud.assuredworkloads_v1beta1.types.Workload):
             Required. The workload to update. The workload’s ``name``
             field is used to identify the workload to be updated.
             Format:
@@ -85,7 +85,7 @@ class UpdateWorkloadRequest(proto.Message):
     workload = proto.Field(
         proto.MESSAGE,
         number=1,
-        message='Workload',
+        message="Workload",
     )
     update_mask = proto.Field(
         proto.MESSAGE,
@@ -178,7 +178,7 @@ class ListWorkloadsResponse(proto.Message):
     r"""Response of ListWorkloads endpoint.
 
     Attributes:
-        workloads (Sequence[google.cloud.assuredworkloads_v1.types.Workload]):
+        workloads (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload]):
             List of Workloads under a given parent.
         next_page_token (str):
             The next page token. Return empty if reached
@@ -192,7 +192,7 @@ class ListWorkloadsResponse(proto.Message):
     workloads = proto.RepeatedField(
         proto.MESSAGE,
         number=1,
-        message='Workload',
+        message="Workload",
     )
     next_page_token = proto.Field(
         proto.STRING,
@@ -203,6 +203,13 @@ class ListWorkloadsResponse(proto.Message):
 class Workload(proto.Message):
     r"""An Workload object for managing highly regulated workloads of
     cloud customers.
+
+    This message has `oneof`_ fields (mutually exclusive fields).
+    For each oneof, at most one member field can be set at the same time.
+    Setting any member of the oneof automatically clears all other
+    members.
+
+    .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
 
     Attributes:
         name (str):
@@ -218,27 +225,48 @@ class Workload(proto.Message):
             hyphen, and spaces.
 
             Example: My Workload
-        resources (Sequence[google.cloud.assuredworkloads_v1.types.Workload.ResourceInfo]):
+        resources (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceInfo]):
             Output only. The resources associated with
             this workload. These resources will be created
             when creating the workload. If any of the
             projects already exist, the workload creation
             will fail. Always read only.
-        compliance_regime (google.cloud.assuredworkloads_v1.types.Workload.ComplianceRegime):
+        compliance_regime (google.cloud.assuredworkloads_v1beta1.types.Workload.ComplianceRegime):
             Required. Immutable. Compliance Regime
             associated with this workload.
         create_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. Immutable. The Workload creation
             timestamp.
         billing_account (str):
-            Required. Input only. The billing account used for the
-            resources which are direct children of workload. This
-            billing account is initially associated with the resources
-            created as part of Workload creation. After the initial
-            creation of these resources, the customer can change the
-            assigned billing account. The resource name has the form
+            Input only. The billing account used for the resources which
+            are direct children of workload. This billing account is
+            initially associated with the resources created as part of
+            Workload creation. After the initial creation of these
+            resources, the customer can change the assigned billing
+            account. The resource name has the form
             ``billingAccounts/{billing_account_id}``. For example,
             ``billingAccounts/012345-567890-ABCDEF``.
+        il4_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.IL4Settings):
+            Required. Input only. Immutable. Settings
+            specific to resources needed for IL4.
+
+            This field is a member of `oneof`_ ``compliance_regime_settings``.
+        cjis_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.CJISSettings):
+            Required. Input only. Immutable. Settings
+            specific to resources needed for CJIS.
+
+            This field is a member of `oneof`_ ``compliance_regime_settings``.
+        fedramp_high_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.FedrampHighSettings):
+            Required. Input only. Immutable. Settings
+            specific to resources needed for FedRAMP High.
+
+            This field is a member of `oneof`_ ``compliance_regime_settings``.
+        fedramp_moderate_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.FedrampModerateSettings):
+            Required. Input only. Immutable. Settings
+            specific to resources needed for FedRAMP
+            Moderate.
+
+            This field is a member of `oneof`_ ``compliance_regime_settings``.
         etag (str):
             Optional. ETag of the workload, it is
             calculated on the basis of the Workload
@@ -252,31 +280,32 @@ class Workload(proto.Message):
             resource which is a child of the Workload parent. If not
             specified all resources are created under the parent
             organization. Format: folders/{folder_id}
-        kms_settings (google.cloud.assuredworkloads_v1.types.Workload.KMSSettings):
+        kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
             Input only. Settings used to create a CMEK
             crypto key. When set a project with a KMS CMEK
             key is provisioned. This field is mandatory for
             a subset of Compliance Regimes.
-        resource_settings (Sequence[google.cloud.assuredworkloads_v1.types.Workload.ResourceSettings]):
+        resource_settings (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceSettings]):
             Input only. Resource properties that are used
             to customize workload resources. These
             properties (such as custom project id) will be
             used to create workload resources if possible.
             This field is optional.
-        kaj_enrollment_state (google.cloud.assuredworkloads_v1.types.Workload.KajEnrollmentState):
+        kaj_enrollment_state (google.cloud.assuredworkloads_v1beta1.types.Workload.KajEnrollmentState):
             Output only. Represents the KAJ enrollment
             state of the given workload.
         enable_sovereign_controls (bool):
             Optional. Indicates the sovereignty status of
             the given workload. Currently meant to be used
             by Europe/Canada customers.
-        saa_enrollment_response (google.cloud.assuredworkloads_v1.types.Workload.SaaEnrollmentResponse):
+        saa_enrollment_response (google.cloud.assuredworkloads_v1beta1.types.Workload.SaaEnrollmentResponse):
             Output only. Represents the SAA enrollment
             response of the given workload. SAA enrollment
             response is queried during GetWorkload call. In
             failure cases, user friendly error message is
             shown in SAA details page.
     """
+
     class ComplianceRegime(proto.Enum):
         r"""Supported Compliance Regimes."""
         COMPLIANCE_REGIME_UNSPECIFIED = 0
@@ -303,13 +332,15 @@ class Workload(proto.Message):
             resource_id (int):
                 Resource identifier. For a project this represents
                 project_number.
-            resource_type (google.cloud.assuredworkloads_v1.types.Workload.ResourceInfo.ResourceType):
+            resource_type (google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceInfo.ResourceType):
                 Indicates the type of resource.
         """
+
         class ResourceType(proto.Enum):
             r"""The type of resource."""
             RESOURCE_TYPE_UNSPECIFIED = 0
             CONSUMER_PROJECT = 1
+            CONSUMER_FOLDER = 4
             ENCRYPTION_KEYS_PROJECT = 2
             KEYRING = 3
 
@@ -320,7 +351,7 @@ class Workload(proto.Message):
         resource_type = proto.Field(
             proto.ENUM,
             number=2,
-            enum='Workload.ResourceInfo.ResourceType',
+            enum="Workload.ResourceInfo.ResourceType",
         )
 
     class KMSSettings(proto.Message):
@@ -350,6 +381,66 @@ class Workload(proto.Message):
             message=duration_pb2.Duration,
         )
 
+    class IL4Settings(proto.Message):
+        r"""Settings specific to resources needed for IL4.
+
+        Attributes:
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
+                Required. Input only. Immutable. Settings
+                used to create a CMEK crypto key.
+        """
+
+        kms_settings = proto.Field(
+            proto.MESSAGE,
+            number=1,
+            message="Workload.KMSSettings",
+        )
+
+    class CJISSettings(proto.Message):
+        r"""Settings specific to resources needed for CJIS.
+
+        Attributes:
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
+                Required. Input only. Immutable. Settings
+                used to create a CMEK crypto key.
+        """
+
+        kms_settings = proto.Field(
+            proto.MESSAGE,
+            number=1,
+            message="Workload.KMSSettings",
+        )
+
+    class FedrampHighSettings(proto.Message):
+        r"""Settings specific to resources needed for FedRAMP High.
+
+        Attributes:
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
+                Required. Input only. Immutable. Settings
+                used to create a CMEK crypto key.
+        """
+
+        kms_settings = proto.Field(
+            proto.MESSAGE,
+            number=1,
+            message="Workload.KMSSettings",
+        )
+
+    class FedrampModerateSettings(proto.Message):
+        r"""Settings specific to resources needed for FedRAMP Moderate.
+
+        Attributes:
+            kms_settings (google.cloud.assuredworkloads_v1beta1.types.Workload.KMSSettings):
+                Required. Input only. Immutable. Settings
+                used to create a CMEK crypto key.
+        """
+
+        kms_settings = proto.Field(
+            proto.MESSAGE,
+            number=1,
+            message="Workload.KMSSettings",
+        )
+
     class ResourceSettings(proto.Message):
         r"""Represent the custom settings for the resources to be
         created.
@@ -359,7 +450,7 @@ class Workload(proto.Message):
                 Resource identifier. For a project this represents
                 project_id. If the project is already taken, the workload
                 creation will fail.
-            resource_type (google.cloud.assuredworkloads_v1.types.Workload.ResourceInfo.ResourceType):
+            resource_type (google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceInfo.ResourceType):
                 Indicates the type of resource. This field should be
                 specified to correspond the id to the right project type
                 (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -376,7 +467,7 @@ class Workload(proto.Message):
         resource_type = proto.Field(
             proto.ENUM,
             number=2,
-            enum='Workload.ResourceInfo.ResourceType',
+            enum="Workload.ResourceInfo.ResourceType",
         )
         display_name = proto.Field(
             proto.STRING,
@@ -386,15 +477,18 @@ class Workload(proto.Message):
     class SaaEnrollmentResponse(proto.Message):
         r"""Signed Access Approvals (SAA) enrollment response.
 
+        .. _oneof: https://proto-plus-python.readthedocs.io/en/stable/fields.html#oneofs-mutually-exclusive-fields
+
         Attributes:
-            setup_status (google.cloud.assuredworkloads_v1.types.Workload.SaaEnrollmentResponse.SetupState):
+            setup_status (google.cloud.assuredworkloads_v1beta1.types.Workload.SaaEnrollmentResponse.SetupState):
                 Indicates SAA enrollment status of a given
                 workload.
 
                 This field is a member of `oneof`_ ``_setup_status``.
-            setup_errors (Sequence[google.cloud.assuredworkloads_v1.types.Workload.SaaEnrollmentResponse.SetupError]):
+            setup_errors (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.SaaEnrollmentResponse.SetupError]):
                 Indicates SAA enrollment setup error if any.
         """
+
         class SetupState(proto.Enum):
             r"""Setup state of SAA enrollment."""
             SETUP_STATE_UNSPECIFIED = 0
@@ -413,12 +507,12 @@ class Workload(proto.Message):
             proto.ENUM,
             number=1,
             optional=True,
-            enum='Workload.SaaEnrollmentResponse.SetupState',
+            enum="Workload.SaaEnrollmentResponse.SetupState",
         )
         setup_errors = proto.RepeatedField(
             proto.ENUM,
             number=2,
-            enum='Workload.SaaEnrollmentResponse.SetupError',
+            enum="Workload.SaaEnrollmentResponse.SetupError",
         )
 
     name = proto.Field(
@@ -447,6 +541,30 @@ class Workload(proto.Message):
     billing_account = proto.Field(
         proto.STRING,
         number=6,
+    )
+    il4_settings = proto.Field(
+        proto.MESSAGE,
+        number=7,
+        oneof="compliance_regime_settings",
+        message=IL4Settings,
+    )
+    cjis_settings = proto.Field(
+        proto.MESSAGE,
+        number=8,
+        oneof="compliance_regime_settings",
+        message=CJISSettings,
+    )
+    fedramp_high_settings = proto.Field(
+        proto.MESSAGE,
+        number=11,
+        oneof="compliance_regime_settings",
+        message=FedrampHighSettings,
+    )
+    fedramp_moderate_settings = proto.Field(
+        proto.MESSAGE,
+        number=12,
+        oneof="compliance_regime_settings",
+        message=FedrampModerateSettings,
     )
     etag = proto.Field(
         proto.STRING,
@@ -498,10 +616,14 @@ class CreateWorkloadOperationMetadata(proto.Message):
             Optional. The display name of the workload.
         parent (str):
             Optional. The parent of the workload.
-        compliance_regime (google.cloud.assuredworkloads_v1.types.Workload.ComplianceRegime):
+        compliance_regime (google.cloud.assuredworkloads_v1beta1.types.Workload.ComplianceRegime):
             Optional. Compliance controls that should be
             applied to the resources managed by the
             workload.
+        resource_settings (Sequence[google.cloud.assuredworkloads_v1beta1.types.Workload.ResourceSettings]):
+            Optional. Resource properties in the input
+            that are used for creating/customizing workload
+            resources.
     """
 
     create_time = proto.Field(
@@ -520,7 +642,12 @@ class CreateWorkloadOperationMetadata(proto.Message):
     compliance_regime = proto.Field(
         proto.ENUM,
         number=4,
-        enum='Workload.ComplianceRegime',
+        enum="Workload.ComplianceRegime",
+    )
+    resource_settings = proto.RepeatedField(
+        proto.MESSAGE,
+        number=5,
+        message="Workload.ResourceSettings",
     )
 
 
