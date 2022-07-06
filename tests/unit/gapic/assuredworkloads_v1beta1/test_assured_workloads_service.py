@@ -2382,7 +2382,6 @@ def test_assured_workloads_service_transport_auth_adc(transport_class):
     [
         transports.AssuredWorkloadsServiceGrpcTransport,
         transports.AssuredWorkloadsServiceGrpcAsyncIOTransport,
-        transports.AssuredWorkloadsServiceRestTransport,
     ],
 )
 def test_assured_workloads_service_transport_auth_gdch_credentials(transport_class):
