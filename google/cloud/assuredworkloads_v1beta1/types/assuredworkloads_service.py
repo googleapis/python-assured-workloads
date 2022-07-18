@@ -16,9 +16,8 @@
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.assuredworkloads.v1beta1',
-    manifest={
-    },
+    package="google.cloud.assuredworkloads.v1beta1",
+    manifest={},
 )
 
 
