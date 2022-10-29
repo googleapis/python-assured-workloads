@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from google.cloud.assuredworkloads import gapic_version as package_version
+
+__version__ = package_version.__version__
+
 
 from google.cloud.assuredworkloads_v1.services.assured_workloads_service.client import (
     AssuredWorkloadsServiceClient,
