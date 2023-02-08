@@ -14,26 +14,28 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from google.longrunning import operations_pb2
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.longrunning import operations_pb2
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -41,12 +43,13 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.assuredworkloads_v1beta1.types import assuredworkloads
 from google.longrunning import operations_pb2  # type: ignore
 from google.protobuf import empty_pb2  # type: ignore
 
-from .base import AssuredWorkloadsServiceTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.assuredworkloads_v1beta1.types import assuredworkloads
 
+from .base import AssuredWorkloadsServiceTransport
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -127,7 +130,12 @@ class AssuredWorkloadsServiceRestInterceptor:
 
 
     """
-    def pre_create_workload(self, request: assuredworkloads.CreateWorkloadRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[assuredworkloads.CreateWorkloadRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_workload(
+        self,
+        request: assuredworkloads.CreateWorkloadRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[assuredworkloads.CreateWorkloadRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_workload
 
         Override in a subclass to manipulate the request or metadata
@@ -135,7 +143,9 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_create_workload(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_workload(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_workload
 
         Override in a subclass to manipulate the response
@@ -143,7 +153,12 @@ class AssuredWorkloadsServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_workload(self, request: assuredworkloads.DeleteWorkloadRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[assuredworkloads.DeleteWorkloadRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_workload(
+        self,
+        request: assuredworkloads.DeleteWorkloadRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[assuredworkloads.DeleteWorkloadRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_workload
 
         Override in a subclass to manipulate the request or metadata
@@ -151,7 +166,13 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return request, metadata
 
-    def pre_restrict_allowed_resources(self, request: assuredworkloads.RestrictAllowedResourcesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[assuredworkloads.RestrictAllowedResourcesRequest, Sequence[Tuple[str, str]]]:
+    def pre_restrict_allowed_resources(
+        self,
+        request: assuredworkloads.RestrictAllowedResourcesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        assuredworkloads.RestrictAllowedResourcesRequest, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for restrict_allowed_resources
 
         Override in a subclass to manipulate the request or metadata
@@ -159,7 +180,9 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_restrict_allowed_resources(self, response: assuredworkloads.RestrictAllowedResourcesResponse) -> assuredworkloads.RestrictAllowedResourcesResponse:
+    def post_restrict_allowed_resources(
+        self, response: assuredworkloads.RestrictAllowedResourcesResponse
+    ) -> assuredworkloads.RestrictAllowedResourcesResponse:
         """Post-rpc interceptor for restrict_allowed_resources
 
         Override in a subclass to manipulate the response
@@ -168,7 +191,11 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return response
 
-    def pre_get_operation(self, request: operations_pb2.GetOperationRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.Operation:
+    def pre_get_operation(
+        self,
+        request: operations_pb2.GetOperationRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.Operation:
         """Pre-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the request or metadata
@@ -176,7 +203,9 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_get_operation(self, response: operations_pb2.GetOperationRequest) -> operations_pb2.Operation:
+    def post_get_operation(
+        self, response: operations_pb2.GetOperationRequest
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for get_operation
 
         Override in a subclass to manipulate the response
@@ -184,7 +213,12 @@ class AssuredWorkloadsServiceRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_operations(self, request: operations_pb2.ListOperationsRequest, metadata: Sequence[Tuple[str, str]]) -> operations_pb2.ListOperationsResponse:
+
+    def pre_list_operations(
+        self,
+        request: operations_pb2.ListOperationsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> operations_pb2.ListOperationsResponse:
         """Pre-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the request or metadata
@@ -192,7 +226,9 @@ class AssuredWorkloadsServiceRestInterceptor:
         """
         return request, metadata
 
-    def post_list_operations(self, response: operations_pb2.ListOperationsRequest) -> operations_pb2.ListOperationsResponse:
+    def post_list_operations(
+        self, response: operations_pb2.ListOperationsRequest
+    ) -> operations_pb2.ListOperationsResponse:
         """Post-rpc interceptor for list_operations
 
         Override in a subclass to manipulate the response
@@ -222,20 +258,21 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'assuredworkloads.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[AssuredWorkloadsServiceRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "assuredworkloads.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[AssuredWorkloadsServiceRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -274,7 +311,9 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -285,10 +324,11 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -305,29 +345,32 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
             http_options: Dict[str, List[Dict[str, str]]] = {
-                'google.longrunning.Operations.GetOperation': [
+                "google.longrunning.Operations.GetOperation": [
                     {
-                        'method': 'get',
-                        'uri': '/v1beta1/{name=organizations/*/locations/*/operations/*}',
+                        "method": "get",
+                        "uri": "/v1beta1/{name=organizations/*/locations/*/operations/*}",
                     },
                 ],
-                'google.longrunning.Operations.ListOperations': [
+                "google.longrunning.Operations.ListOperations": [
                     {
-                        'method': 'get',
-                        'uri': '/v1beta1/{name=organizations/*/locations/*}/operations',
+                        "method": "get",
+                        "uri": "/v1beta1/{name=organizations/*/locations/*}/operations",
                     },
                 ],
             }
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1beta1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1beta1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -336,39 +379,50 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         def __hash__(self):
             return hash("AnalyzeWorkloadMove")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.AnalyzeWorkloadMoveRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> assuredworkloads.AnalyzeWorkloadMoveResponse:
+        def __call__(
+            self,
+            request: assuredworkloads.AnalyzeWorkloadMoveRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> assuredworkloads.AnalyzeWorkloadMoveResponse:
             raise NotImplementedError(
                 "Method AnalyzeWorkloadMove is not available over REST transport"
             )
+
     class _CreateWorkload(AssuredWorkloadsServiceRestStub):
         def __hash__(self):
             return hash("CreateWorkload")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.CreateWorkloadRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: assuredworkloads.CreateWorkloadRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create workload method over HTTP.
 
             Args:
@@ -388,11 +442,12 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{parent=organizations/*/locations/*}/workloads',
-                'body': 'workload',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{parent=organizations/*/locations/*}/workloads",
+                    "body": "workload",
+                },
             ]
             request, metadata = self._interceptor.pre_create_workload(request, metadata)
             pb_request = assuredworkloads.CreateWorkloadRequest.pb(request)
@@ -401,33 +456,35 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -444,19 +501,24 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         def __hash__(self):
             return hash("DeleteWorkload")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.DeleteWorkloadRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: assuredworkloads.DeleteWorkloadRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete workload method over HTTP.
 
             Args:
@@ -469,37 +531,40 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1beta1/{name=organizations/*/locations/*/workloads/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1beta1/{name=organizations/*/locations/*/workloads/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_workload(request, metadata)
             pb_request = assuredworkloads.DeleteWorkloadRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -510,121 +575,143 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         def __hash__(self):
             return hash("GetWorkload")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.GetWorkloadRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> assuredworkloads.Workload:
+        def __call__(
+            self,
+            request: assuredworkloads.GetWorkloadRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> assuredworkloads.Workload:
             raise NotImplementedError(
                 "Method GetWorkload is not available over REST transport"
             )
+
     class _ListWorkloads(AssuredWorkloadsServiceRestStub):
         def __hash__(self):
             return hash("ListWorkloads")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.ListWorkloadsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> assuredworkloads.ListWorkloadsResponse:
+        def __call__(
+            self,
+            request: assuredworkloads.ListWorkloadsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> assuredworkloads.ListWorkloadsResponse:
             raise NotImplementedError(
                 "Method ListWorkloads is not available over REST transport"
             )
+
     class _RestrictAllowedResources(AssuredWorkloadsServiceRestStub):
         def __hash__(self):
             return hash("RestrictAllowedResources")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.RestrictAllowedResourcesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> assuredworkloads.RestrictAllowedResourcesResponse:
+        def __call__(
+            self,
+            request: assuredworkloads.RestrictAllowedResourcesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> assuredworkloads.RestrictAllowedResourcesResponse:
             r"""Call the restrict allowed
-        resources method over HTTP.
+            resources method over HTTP.
 
-            Args:
-                request (~.assuredworkloads.RestrictAllowedResourcesRequest):
-                    The request object. Request for restricting list of
-                available resources in Workload
-                environment.
+                Args:
+                    request (~.assuredworkloads.RestrictAllowedResourcesRequest):
+                        The request object. Request for restricting list of
+                    available resources in Workload
+                    environment.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
 
-            Returns:
-                ~.assuredworkloads.RestrictAllowedResourcesResponse:
-                    Response for restricting the list of
-                allowed resources.
+                Returns:
+                    ~.assuredworkloads.RestrictAllowedResourcesResponse:
+                        Response for restricting the list of
+                    allowed resources.
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1beta1/{name=organizations/*/locations/*/workloads/*}:restrictAllowedResources',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1beta1/{name=organizations/*/locations/*/workloads/*}:restrictAllowedResources",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_restrict_allowed_resources(request, metadata)
+            request, metadata = self._interceptor.pre_restrict_allowed_resources(
+                request, metadata
+            )
             pb_request = assuredworkloads.RestrictAllowedResourcesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -643,90 +730,105 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         def __hash__(self):
             return hash("UpdateWorkload")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: assuredworkloads.UpdateWorkloadRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> assuredworkloads.Workload:
+        def __call__(
+            self,
+            request: assuredworkloads.UpdateWorkloadRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> assuredworkloads.Workload:
             raise NotImplementedError(
                 "Method UpdateWorkload is not available over REST transport"
             )
 
     @property
-    def analyze_workload_move(self) -> Callable[
-            [assuredworkloads.AnalyzeWorkloadMoveRequest],
-            assuredworkloads.AnalyzeWorkloadMoveResponse]:
+    def analyze_workload_move(
+        self,
+    ) -> Callable[
+        [assuredworkloads.AnalyzeWorkloadMoveRequest],
+        assuredworkloads.AnalyzeWorkloadMoveResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._AnalyzeWorkloadMove(self._session, self._host, self._interceptor) # type: ignore
+        return self._AnalyzeWorkloadMove(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_workload(self) -> Callable[
-            [assuredworkloads.CreateWorkloadRequest],
-            operations_pb2.Operation]:
+    def create_workload(
+        self,
+    ) -> Callable[[assuredworkloads.CreateWorkloadRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateWorkload(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateWorkload(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_workload(self) -> Callable[
-            [assuredworkloads.DeleteWorkloadRequest],
-            empty_pb2.Empty]:
+    def delete_workload(
+        self,
+    ) -> Callable[[assuredworkloads.DeleteWorkloadRequest], empty_pb2.Empty]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteWorkload(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteWorkload(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_workload(self) -> Callable[
-            [assuredworkloads.GetWorkloadRequest],
-            assuredworkloads.Workload]:
+    def get_workload(
+        self,
+    ) -> Callable[[assuredworkloads.GetWorkloadRequest], assuredworkloads.Workload]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetWorkload(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetWorkload(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_workloads(self) -> Callable[
-            [assuredworkloads.ListWorkloadsRequest],
-            assuredworkloads.ListWorkloadsResponse]:
+    def list_workloads(
+        self,
+    ) -> Callable[
+        [assuredworkloads.ListWorkloadsRequest], assuredworkloads.ListWorkloadsResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListWorkloads(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListWorkloads(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def restrict_allowed_resources(self) -> Callable[
-            [assuredworkloads.RestrictAllowedResourcesRequest],
-            assuredworkloads.RestrictAllowedResourcesResponse]:
+    def restrict_allowed_resources(
+        self,
+    ) -> Callable[
+        [assuredworkloads.RestrictAllowedResourcesRequest],
+        assuredworkloads.RestrictAllowedResourcesResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RestrictAllowedResources(self._session, self._host, self._interceptor) # type: ignore
+        return self._RestrictAllowedResources(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_workload(self) -> Callable[
-            [assuredworkloads.UpdateWorkloadRequest],
-            assuredworkloads.Workload]:
+    def update_workload(
+        self,
+    ) -> Callable[[assuredworkloads.UpdateWorkloadRequest], assuredworkloads.Workload]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateWorkload(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateWorkload(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def get_operation(self):
-        return self._GetOperation(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOperation(self._session, self._host, self._interceptor)  # type: ignore
 
     class _GetOperation(AssuredWorkloadsServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.GetOperationRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: operations_pb2.GetOperationRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
 
             r"""Call the get operation method over HTTP.
 
@@ -743,26 +845,26 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
                 operations_pb2.Operation: Response from GetOperation method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta1/{name=organizations/*/locations/*/operations/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta1/{name=organizations/*/locations/*/operations/*}",
+                },
             ]
 
             request, metadata = self._interceptor.pre_get_operation(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -783,15 +885,17 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
 
     @property
     def list_operations(self):
-        return self._ListOperations(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListOperations(self._session, self._host, self._interceptor)  # type: ignore
 
     class _ListOperations(AssuredWorkloadsServiceRestStub):
-        def __call__(self,
-            request: operations_pb2.ListOperationsRequest, *,
-            retry: OptionalRetry=gapic_v1.method.DEFAULT,
-            timeout: Optional[float]=None,
-            metadata: Sequence[Tuple[str, str]]=(),
-            ) -> operations_pb2.ListOperationsResponse:
+        def __call__(
+            self,
+            request: operations_pb2.ListOperationsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.ListOperationsResponse:
 
             r"""Call the list operations method over HTTP.
 
@@ -808,26 +912,26 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
                 operations_pb2.ListOperationsResponse: Response from ListOperations method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1beta1/{name=organizations/*/locations/*}/operations',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1beta1/{name=organizations/*/locations/*}/operations",
+                },
             ]
 
             request, metadata = self._interceptor.pre_list_operations(request, metadata)
             request_kwargs = json_format.MessageToDict(request)
-            transcoded_request = path_template.transcode(
-                http_options, **request_kwargs)
+            transcoded_request = path_template.transcode(http_options, **request_kwargs)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json.dumps(transcoded_request['query_params']))
+            query_params = json.loads(json.dumps(transcoded_request["query_params"]))
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
 
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
@@ -854,6 +958,4 @@ class AssuredWorkloadsServiceRestTransport(AssuredWorkloadsServiceTransport):
         self._session.close()
 
 
-__all__=(
-    'AssuredWorkloadsServiceRestTransport',
-)
+__all__ = ("AssuredWorkloadsServiceRestTransport",)
